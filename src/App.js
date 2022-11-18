@@ -1,14 +1,25 @@
 import { useState } from "react";
+import cece from "./assets/cece.jpg";
+import coach from "./assets/coach.jpeg";
+import nick from "./assets/nick.jpg";
+import jess from "./assets/jess.jpg";
+import winston from "./assets/winston.jpeg";
+import schmidt from "./assets/schmidt.jpg";
+import cast1 from "./assets/cast1.jpg";
+import cast2 from "./assets/cast2.jpg";
+import cast3 from "./assets/cast3.jpg";
+import cast4 from "./assets/cast4.jpeg";
+
 import "./App.css";
 
 //
 const cardCategories = [
-  { src: "./assets/cece.jpg" },
-  { src: "./assets/coach.jpg" },
-  { src: "./assets/jess.jpg" },
-  { src: "./assets/winston.jpg" },
-  { src: "./assets/nick.jpg" },
-  { src: "./assets/schmidt.jpg" },
+  { src: cece },
+  { src: coach },
+  { src: jess },
+  { src: nick },
+  { src: winston },
+  { src: schmidt },
 ];
 
 function App() {
@@ -29,6 +40,16 @@ function App() {
     <div className="App">
       <h1>Test Your Memory!</h1>
       <button onClick={shuffle}> New Game</button>
+      <div className="card-placement">
+        {cards.map((card) => (
+          <div className="card" key={card.id}>
+            <div>
+              <img className="card-face" src={card.src} alt="card-front" />
+              <img className="card-back" src={cast4} alt="card-back" />
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
