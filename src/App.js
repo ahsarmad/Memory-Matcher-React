@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import CardItem from "./components/cardItem";
 
@@ -32,9 +32,28 @@ function App() {
     setCards(isShuffled);
     setTurns(0);
   };
-
+  // handle choice made by user
   const handleChoice = (card) => {
-    console.log(card);
+    firstPick ? setSecondPick(card) : setFirstPick(card);
+  };
+
+  // compare the user selected choices
+  useEffect(() => {
+    if (firstPick && secondPick) {
+      if (firstPick.src === secondPick.src) {
+        console.log("you have a match!");
+        resetTurn();
+      } else {
+        console.log("you do not have no match");
+        resetTurn();
+      }
+    }
+  }, [firstPick, secondPick]);
+
+  // reset the choices
+  const resetTurn = () => {
+    setFirstPick(null);
+    setSecondPick(null);
   };
 
   return (

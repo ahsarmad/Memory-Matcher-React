@@ -4,9 +4,9 @@ import cast4 from "../assets/cast4.jpeg";
 import React from "react";
 
 export default function CardItem({ card, handleChoice }) {
-  // const handlePress = () => {
-  //   handleChoice(card);
-  // };
+  const handlePress = () => {
+    handleChoice(card);
+  };
   return (
     <div className="card">
       <div>
@@ -15,7 +15,7 @@ export default function CardItem({ card, handleChoice }) {
           className="card-back"
           src={cast4}
           alt="card-back"
-          // onClick={handlePress}
+          onClick={handlePress}
         />
       </div>
     </div>
