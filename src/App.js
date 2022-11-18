@@ -23,6 +23,7 @@ function App() {
   const [turns, setTurns] = useState(0);
   const [firstPick, setFirstPick] = useState(null);
   const [secondPick, setSecondPick] = useState(null);
+  const [unavailable, setUnavailable] = useState(false);
 
   //shuffle the cards
   const shuffle = () => {
@@ -42,6 +43,7 @@ function App() {
   // compare the user selected choices
   useEffect(() => {
     if (firstPick && secondPick) {
+      setUnavailable(true);
       if (firstPick.src === secondPick.src) {
         setCards((prevCards) => {
           return prevCards.map((card) => {
@@ -54,7 +56,7 @@ function App() {
         });
         resetTurn();
       } else {
-        setTimeout(() => resetTurn(), 1100);
+        setTimeout(() => resetTurn(), 1500);
       }
     }
   }, [firstPick, secondPick]);
@@ -65,6 +67,7 @@ function App() {
   const resetTurn = () => {
     setFirstPick(null);
     setSecondPick(null);
+    setUnavailable(false);
   };
 
   return (
@@ -77,6 +80,7 @@ function App() {
             card={card}
             handleChoice={handleChoice}
             flipped={card === firstPick || card === secondPick || card.matched}
+            unavailable={unavailable}
           />
         ))}
       </div>

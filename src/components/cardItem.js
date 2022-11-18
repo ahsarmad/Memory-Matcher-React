@@ -3,9 +3,11 @@ import cast4 from "../assets/cast4.jpeg";
 
 import React from "react";
 
-export default function CardItem({ card, handleChoice, flipped }) {
+export default function CardItem({ card, handleChoice, flipped, unavailable }) {
   const handlePress = () => {
-    handleChoice(card);
+    if (!unavailable) {
+      handleChoice(card);
+    }
   };
   return (
     <div className="card">
