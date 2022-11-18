@@ -8,3 +8,12 @@
   display: block;
   border: 2px solid #fff;
 }
+
+.card .face {
+  transform: rotateY(90deg);
+  position: absolute;
+}
+
+.flipped .face {
+  transform: rotateY(0deg);
+}

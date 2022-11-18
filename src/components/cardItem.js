@@ -3,16 +3,16 @@ import cast4 from "../assets/cast4.jpeg";
 
 import React from "react";
 
-export default function CardItem({ card, handleChoice }) {
+export default function CardItem({ card, handleChoice, flipped }) {
   const handlePress = () => {
     handleChoice(card);
   };
   return (
     <div className="card">
-      <div>
-        <img className="card-face" src={card.src} alt="card-front" />
+      <div className={flipped ? "flipped" : ""}>
+        <img className="face" src={card.src} alt="card-front" />
         <img
-          className="card-back"
+          className="back"
           src={cast4}
           alt="card-back"
           onClick={handlePress}

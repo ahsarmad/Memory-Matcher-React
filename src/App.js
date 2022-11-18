@@ -54,7 +54,7 @@ function App() {
         });
         resetTurn();
       } else {
-        resetTurn();
+        setTimeout(() => resetTurn(), 1100);
       }
     }
   }, [firstPick, secondPick]);
@@ -72,7 +72,12 @@ function App() {
       <h1>Test Your Memory!</h1>
       <div className="card-placement">
         {cards.map((card) => (
-          <CardItem key={card.id} card={card} handleChoice={handleChoice} />
+          <CardItem
+            key={card.id}
+            card={card}
+            handleChoice={handleChoice}
+            flipped={card === firstPick || card === secondPick || card.matched}
+          />
         ))}
       </div>
       <button onClick={shuffle}> New Game</button>
