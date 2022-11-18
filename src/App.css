@@ -5,12 +5,12 @@ body {
 }
 
 img {
-  height: 320px;
+  height: 300px;
 }
 
 .App {
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 40px;
+  padding-right: 40px;
   background-color: #09111b;
   min-height: 100vh;
   display: flex;

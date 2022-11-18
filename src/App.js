@@ -21,6 +21,9 @@ const cardCategories = [
 function App() {
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
+  const [firstPick, setFirstPick] = useState(null);
+  const [secondPick, setSecondPick] = useState(null);
+
   const shuffle = () => {
     const isShuffled = [...cardCategories, ...cardCategories]
       .sort(() => Math.random() - 0.5)
@@ -30,14 +33,16 @@ function App() {
     setTurns(0);
   };
 
-  console.log(cards, turns);
+  const handleChoice = (card) => {
+    console.log(card);
+  };
 
   return (
     <div className="App">
       <h1>Test Your Memory!</h1>
       <div className="card-placement">
         {cards.map((card) => (
-          <CardItem key={card.id} card={card} />
+          <CardItem key={card.id} card={card} handleChoice={handleChoice} />
         ))}
       </div>
       <button onClick={shuffle}> New Game</button>
