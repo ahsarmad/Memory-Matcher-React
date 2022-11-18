@@ -20,7 +20,6 @@ const cardCategories = [
 
 function App() {
   const [cards, setCards] = useState([]);
-  const [turns, setTurns] = useState(0);
   const [firstPick, setFirstPick] = useState(null);
   const [secondPick, setSecondPick] = useState(null);
   const [unavailable, setUnavailable] = useState(false);
@@ -32,7 +31,6 @@ function App() {
       .map((card) => ({ ...card, id: Math.random() }));
 
     setCards(isShuffled);
-    setTurns(0);
   };
 
   // handle choice made by user
