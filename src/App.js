@@ -10,12 +10,12 @@ import winston from "./assets/winston.jpeg";
 import schmidt from "./assets/schmidt.jpg";
 
 const cardCategories = [
-  { src: cece },
-  { src: coach },
-  { src: jess },
-  { src: nick },
-  { src: winston },
-  { src: schmidt },
+  { src: cece, matched: false },
+  { src: coach, matched: false },
+  { src: jess, matched: false },
+  { src: nick, matched: false },
+  { src: winston, matched: false },
+  { src: schmidt, matched: false },
 ];
 
 function App() {
@@ -24,6 +24,7 @@ function App() {
   const [firstPick, setFirstPick] = useState(null);
   const [secondPick, setSecondPick] = useState(null);
 
+  //shuffle the cards
   const shuffle = () => {
     const isShuffled = [...cardCategories, ...cardCategories]
       .sort(() => Math.random() - 0.5)
@@ -32,6 +33,7 @@ function App() {
     setCards(isShuffled);
     setTurns(0);
   };
+
   // handle choice made by user
   const handleChoice = (card) => {
     firstPick ? setSecondPick(card) : setFirstPick(card);
@@ -41,14 +43,23 @@ function App() {
   useEffect(() => {
     if (firstPick && secondPick) {
       if (firstPick.src === secondPick.src) {
-        console.log("you have a match!");
+        setCards((prevCards) => {
+          return prevCards.map((card) => {
+            if (card.src === firstPick.src) {
+              return { ...card, matched: true };
+            } else {
+              return card;
+            }
+          });
+        });
         resetTurn();
       } else {
-        console.log("you do not have no match");
         resetTurn();
       }
     }
   }, [firstPick, secondPick]);
+
+  console.log(cards);
 
   // reset the choices
   const resetTurn = () => {
