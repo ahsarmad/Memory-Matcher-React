@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import CardItem from "./components/cardItem";
 
 import cece from "./assets/cece.jpg";
 import coach from "./assets/coach.jpeg";
@@ -7,7 +8,6 @@ import nick from "./assets/nick.jpg";
 import jess from "./assets/jess.jpg";
 import winston from "./assets/winston.jpeg";
 import schmidt from "./assets/schmidt.jpg";
-import cast4 from "./assets/cast4.jpeg";
 
 const cardCategories = [
   { src: cece },
@@ -37,12 +37,7 @@ function App() {
       <h1>Test Your Memory!</h1>
       <div className="card-placement">
         {cards.map((card) => (
-          <div className="card" key={card.id}>
-            <div>
-              <img className="card-face" src={card.src} alt="card-front" />
-              <img className="card-back" src={cast4} alt="card-back" />
-            </div>
-          </div>
+          <CardItem key={card.id} card={card} />
         ))}
       </div>
       <button onClick={shuffle}> New Game</button>
